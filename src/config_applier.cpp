@@ -413,9 +413,9 @@ void ConfigApplier::applyConfiguration(const ConfigStore& ref_config_store)
   configureAidingAssignement(ref_config_store.getAidingAssignement());
   configureMagModel(ref_config_store.getMagnetometerModel());
   configureMagRejection(ref_config_store.getMagnetometerRejection());
-  configureGnssModel(ref_config_store.getGnssModel());
-  configureGnssInstallation(ref_config_store.getGnssInstallation());
-  configureGnssRejection(ref_config_store.getGnssRejection());
+  // configureGnssModel(ref_config_store.getGnssModel());
+  // configureGnssInstallation(ref_config_store.getGnssInstallation());
+  // configureGnssRejection(ref_config_store.getGnssRejection());
   configureOdometer(ref_config_store.getOdometerConf());
   configureOdometerLevelArm(ref_config_store.getOdometerLevelArms());
   configureOdometerRejection(ref_config_store.getOdometerRejection());
