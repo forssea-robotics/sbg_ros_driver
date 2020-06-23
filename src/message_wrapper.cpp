@@ -22,7 +22,7 @@ m_first_valid_utc_(false)
   if (n_private.hasParam("output/frame_id"))
   {
     n_private.param<std::string>("output/frame_id", m_ros_config_frame_id_, "missing");
-}
+  }
 }
 
 //---------------------------------------------------------------------//
@@ -655,10 +655,17 @@ const sensor_msgs::Imu MessageWrapper::createRosImuMessage(const sbg_driver::Sbg
   imu_ros_message.header = createRosHeader(ref_sbg_imu_msg.time_stamp);
 
   imu_ros_message.orientation                       = ref_sbg_quat_msg.quaternion;
+  imu_ros_message.orientation_covariance[0]         = 0.01;
+  imu_ros_message.orientation_covariance[4]         = 0.01;
+  imu_ros_message.orientation_covariance[8]         = 0.16;
   imu_ros_message.angular_velocity                  = ref_sbg_imu_msg.gyro;
-  imu_ros_message.angular_velocity_covariance[0]    = -1;
+  imu_ros_message.angular_velocity_covariance[0]    = 0.01;
+  imu_ros_message.angular_velocity_covariance[4]    = 0.01;
+  imu_ros_message.angular_velocity_covariance[8]    = 0.01;
   imu_ros_message.linear_acceleration               = ref_sbg_imu_msg.accel;
-  imu_ros_message.linear_acceleration_covariance[0] = -1;
+  imu_ros_message.linear_acceleration_covariance[0] = 0.01;
+  imu_ros_message.linear_acceleration_covariance[4] = 0.01;
+  imu_ros_message.linear_acceleration_covariance[8] = 0.01;
 
   return imu_ros_message;
 }
