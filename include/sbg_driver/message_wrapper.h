@@ -83,6 +83,7 @@ private:
   ros::Time               m_ros_processing_time_;
   sbg_driver::SbgUtcTime  m_last_sbg_utc_;
   bool                    m_first_valid_utc_;
+  std::string             m_ros_config_frame_id_;
 
   //---------------------------------------------------------------------//
   //- Internal methods                                                  -//

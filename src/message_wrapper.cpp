@@ -17,6 +17,12 @@ MessageWrapper::MessageWrapper(void):
 m_first_valid_utc_(false)
 {
   
+
+  ros::NodeHandle n_private("~");
+  if (n_private.hasParam("output/frame_id"))
+  {
+    n_private.param<std::string>("output/frame_id", m_ros_config_frame_id_, "missing");
+}
 }
 
 //---------------------------------------------------------------------//
@@ -69,6 +75,8 @@ const std_msgs::Header MessageWrapper::createRosHeader(uint32_t device_timestamp
 
     header.frame_id = frame_header;
   }
+
+  header.frame_id = m_ros_config_frame_id_;
 
   return header;
 }
